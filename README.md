@@ -14,3 +14,5 @@ you'll need them).
 - split
 
 - base-unicode-symbols
+
+- puremd5

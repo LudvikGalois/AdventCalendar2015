@@ -19,7 +19,7 @@ niceString = (∧) <$> (moreThan 3) ∘ filter (∈ "aeiou") ⊛
                        ⊛ all (∉ ["ab", "cd", "pq", "xy"])) ∘ nGroups 2)
 
 part1 ∷ String → ℤ
-part1 = fromIntegral ∘ length ∘ filter niceString ∘ lines
+part1 = σ ∘ length ∘ filter niceString ∘ lines
 
 nonRepeatedPairs ∷ [String] → Bool
 nonRepeatedPairs = or ∘ (zipWith (∈) <$> id ⊛ (2 ↓) ∘ tails)
@@ -29,4 +29,4 @@ improvedNiceString = (∧) <$> nonRepeatedPairs ∘ nGroups 2
                            ⊛ any (\[x,_,y] → x ≡ y) ∘ nGroups 3
 
 part2 ∷ String → ℤ
-part2 = fromIntegral ∘ length ∘ filter improvedNiceString ∘ lines
+part2 = σ ∘ length ∘ filter improvedNiceString ∘ lines

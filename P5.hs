@@ -22,8 +22,7 @@ part1 ∷ String → ℤ
 part1 = fromIntegral ∘ length ∘ filter niceString ∘ lines
 
 nonRepeatedPairs ∷ [String] → Bool
-nonRepeatedPairs (x:y:zs) = x ∈ zs ∨ nonRepeatedPairs (y:zs)
-nonRepeatedPairs _        = False
+nonRepeatedPairs = or ∘ (zipWith (∈) <$> id ⊛ (2 ↓) ∘ tails)
 
 improvedNiceString ∷ String → Bool
 improvedNiceString = (∧) <$> nonRepeatedPairs ∘ nGroups 2

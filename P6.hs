@@ -12,13 +12,13 @@ import Data.List
 type Instruction = ((Int → Int), (Int,Int), (Int,Int))
 
 readT ∷ String → (Int,Int)
-readT n = read ("(" ++ n ++ ")")
+readT n = read ('(' : n ++ ")")
 
 toInstruction ∷ ((Int → Int), (Int → Int), (Int → Int)) → [String] → Instruction
-toInstruction (tog, _, _)  ["toggle", n, _, m]  = (tog ,readT n, readT m)
-toInstruction (_, on, off) ["turn", s, n, _, m] = (p ,readT n, readT m)
+toInstruction (tog, _, _)  ["toggle",  n, _, m] = (tog, readT n, readT m)
+toInstruction (_, on, off) ["turn", s, n, _, m] = (p  , readT n, readT m)
   where p = case s of
-          "on" → on
+          "on"  → on
           "off" → off
 
 applyInstruction ∷ Array (Int,Int) Int → Instruction → Array (Int,Int) Int
@@ -34,7 +34,8 @@ initialLights ∷ Array (Int,Int) Int
 initialLights = array ((0,0),(999,999)) [((x,y),0) | x ← [0..999], y ← [0..999]]
 
 part1 ∷ String → Int
-part1 = solve (\n → if n == 0 then 1 else 0, const 1, const 0)
+part1 = solve (\n → if n ≡ 0 then 1 else 0, const 1, const 0)
 
 part2 ∷ String → Int
 part2 = solve (succ ∘ succ, succ, max 0 ∘ pred)
+

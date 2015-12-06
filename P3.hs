@@ -1,6 +1,7 @@
 {-# Language UnicodeSyntax #-}
 
 import Prelude.Unicode
+import ProbieUnicode
 import qualified Data.Set as S
 
 toDirection ∷ Char → (ℤ,ℤ)
@@ -14,9 +15,9 @@ path = S.fromList ∘
        scanl (\(a',b') x → let (a,b) = toDirection x in (a+a',b+b')) (0,0)
 
 part1 ∷ String → ℤ
-part1 = fromIntegral ∘ S.size ∘ path
+part1 = σ ∘ S.size ∘ path
 
 part2 ∷ String → ℤ
-part2 s = fromIntegral $ S.size $ path santaPath `S.union` path roboPath
+part2 s = σ $ S.size $ path santaPath ∪ path robotPath
   where santaPath = [d | (p,d) ← zip (cycle [True,False]) s, p] 
         robotPath = [d | (p,d) ← zip (cycle [False,True]) s, p]

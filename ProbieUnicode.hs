@@ -4,6 +4,7 @@
 module ProbieUnicode where
 
 import qualified Data.Set as S
+import Data.List
 
 -- After a while, all things become APL
 
@@ -16,8 +17,15 @@ import qualified Data.Set as S
 σ ∷ (Integral α, Integral β) ⇒ α → β
 σ = fromIntegral
 
-(∪) ∷ Ord α ⇒ S.Set α → S.Set α → S.Set α
-(∪) = S.union
+class SetLike s where
+  (∪) ∷ Ord α ⇒ s α → s α → s α 
+  (∩) ∷ Ord α ⇒ s α → s α → s α 
 
-(∩) ∷ Ord α ⇒ S.Set α → S.Set α → S.Set α
-(∩) = S.intersection
+instance SetLike S.Set where
+  (∪) = S.union
+  (∩) = S.intersection
+
+instance SetLike ([]) where
+  (∪) = union
+  (∩) = intersect
+  

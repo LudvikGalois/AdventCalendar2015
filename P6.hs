@@ -38,4 +38,3 @@ part1 = solve (\n → if n ≡ 0 then 1 else 0, const 1, const 0)
 
 part2 ∷ String → Int
 part2 = solve (succ ∘ succ, succ, max 0 ∘ pred)
-

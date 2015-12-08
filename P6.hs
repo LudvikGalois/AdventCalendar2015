@@ -2,8 +2,11 @@
 
 import Prelude.Unicode
 import ProbieUnicode
+
 import Data.Array
 import Data.List
+  
+import Text.PrettyPrint
 
 -- Note, immutable arrays make this really slow, except mutable
 -- arrays add too much boiler plate, and I was trying to write this
@@ -38,3 +41,10 @@ part1 = solve (\n → if n ≡ 0 then 1 else 0, const 1, const 0)
 
 part2 ∷ String → Int
 part2 = solve (succ ∘ succ, succ, max 0 ∘ pred)
+        
+main ∷ IO ()
+main = do
+  input ← readFile "P6.txt"
+  putRender $ text "Advent of Code Problem 6"
+          $+$ text "Part 1:" <+> int (part1 input)
+          $+$ text "Part 2:" <+> int (part2 input)

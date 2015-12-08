@@ -1,8 +1,12 @@
 {-# Language UnicodeSyntax #-}
 
 import Prelude.Unicode
+import ProbieUnicode
+  
 import Data.List.Split
 import Data.List
+
+import Text.PrettyPrint
 
 dimensions ∷ String → (ℤ, ℤ, ℤ)
 dimensions = (\[x,y,z] → (x,y,z)) ∘ sort ∘ map read ∘ splitOn "x"
@@ -18,3 +22,10 @@ part1 = sum ∘ map wrappingPaper ∘ map dimensions ∘ lines
 
 part2 ∷ String → ℤ
 part2 = sum ∘ map ribbon ∘ map dimensions ∘ lines
+        
+main ∷ IO ()
+main = do
+  input ← readFile "P2.txt"
+  putRender $ text "Advent of Code Problem 2"
+          $+$ text "Part 1:" <+> integer (part1 input)
+          $+$ text "Part 2:" <+> integer (part2 input)

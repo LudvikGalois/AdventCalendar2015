@@ -6,6 +6,8 @@ import ProbieUnicode
 import Control.Applicative
 import Control.Applicative.Unicode
 
+import Text.PrettyPrint
+
 stripEscaped ∷ String → String
 stripEscaped [] = []
 stripEscaped ('\\':'\\':xs)    = '\\': stripEscaped xs
@@ -18,3 +20,10 @@ part1 = sum ∘ map ((-) <$> length ⊛ length ∘ tail ∘ init ∘ stripEscape
 
 part2 ∷ String → Int
 part2 = sum ∘ map ((-) <$> length ∘ show ⊛ length) ∘ lines 
+        
+main ∷ IO ()
+main = do
+  input ← readFile "P8.txt"
+  putRender $ text "Advent of Code Problem 8"
+          $+$ text "Part 1:" <+> int (part1 input)
+          $+$ text "Part 2:" <+> int (part2 input)

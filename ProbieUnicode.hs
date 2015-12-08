@@ -6,6 +6,10 @@ module ProbieUnicode where
 import qualified Data.Set as S
 import Data.List
 
+import Prelude.Unicode
+
+import Text.PrettyPrint
+
 -- After a while, all things become APL
 
 (↑) ∷ Int → [α] → [α]
@@ -28,4 +32,8 @@ instance SetLike S.Set where
 instance SetLike ([]) where
   (∪) = union
   (∩) = intersect
-  
+
+-- Doesn't really belong here, but I don't feel like making a separate file
+-- for it
+putRender ∷ Doc → IO ()
+putRender = putStrLn ∘ render

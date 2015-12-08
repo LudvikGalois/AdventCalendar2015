@@ -7,6 +7,8 @@ import Control.Applicative
 import Control.Applicative.Unicode
 import Data.List
 
+import Text.PrettyPrint
+
 moreThan ∷ Int → [α] → Bool
 moreThan n = not ∘ null ∘ (pred n ↓)
 
@@ -30,3 +32,10 @@ improvedNiceString = (∧) <$> nonRepeatedPairs ∘ nGroups 2
 
 part2 ∷ String → ℤ
 part2 = σ ∘ length ∘ filter improvedNiceString ∘ lines
+
+main ∷ IO ()
+main = do
+  input ← readFile "P5.txt"
+  putRender $ text "Advent of Code Problem 5"
+          $+$ text "Part 1:" <+> integer (part1 input)
+          $+$ text "Part 2:" <+> integer (part2 input)

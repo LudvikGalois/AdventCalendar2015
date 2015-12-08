@@ -12,6 +12,8 @@ import Data.List
 import Data.Map (Map)
 import Data.Word
 
+import Text.PrettyPrint
+
 import qualified Data.Map as M
 
 type Wireset = Map String Word16
@@ -45,3 +47,10 @@ part1 = (M.! "a") ∘ buildWireSet
 
 part2 ∷ String → Word16
 part2 = (M.! "a") ∘ löb ∘ ((M.insert "b") <$> const ∘ part1 ⊛ buildWireSpec)
+
+main ∷ IO ()
+main = do
+  input ← readFile "P7.txt"
+  putRender $ text "Advent of Code Problem 7"
+          $+$ text "Part 1:" <+> integer (σ $ part1 input)
+          $+$ text "Part 2:" <+> integer (σ $ part2 input)

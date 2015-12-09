@@ -9,9 +9,9 @@ import qualified Data.ByteString.Lazy.Char8 as BS
 import Text.PrettyPrint
 
 adventCoin ∷ Int → String → ℤ
-adventCoin n = fst ∘ head ∘ (dropWhile ((/=  (replicate n '0')) ∘ take n ∘ snd))
+adventCoin n = fst ∘ head ∘ (dropWhile ((≢ (replicate n '0')) ∘ take n ∘ snd))
              ∘ zip [1..] ∘ map show ∘ map (hash ∘ BS.pack ∷ String → MD5Digest)
-             ∘ (zipWith (flip (++)) (map show [1..]) ∘ repeat)
+             ∘ (zipWith (flip (⧺)) (map show [1..]) ∘ repeat)
 
 
 part1 ∷ String → ℤ

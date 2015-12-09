@@ -15,7 +15,7 @@ import Text.PrettyPrint
 type Instruction = ((Int → Int), (Int,Int), (Int,Int))
 
 readT ∷ String → (Int,Int)
-readT n = read ('(' : n ++ ")")
+readT n = read ('(' : n ⧺ ")")
 
 toInstruction ∷ ((Int → Int), (Int → Int), (Int → Int)) → [String] → Instruction
 toInstruction (tog, _, _)  ["toggle",  n, _, m] = (tog, readT n, readT m)

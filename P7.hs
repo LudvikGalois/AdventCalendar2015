@@ -49,7 +49,7 @@ part2 ∷ String → Word16
 part2 = (M.! "a") ∘ löb ∘ ((M.insert "b") <$> const ∘ part1 ⊛ buildWireSpec)
 
 main ∷ IO ()
-main = do
+main = do 
   input ← readFile "P7.txt"
   putRender $ text "Advent of Code Problem 7"
           $+$ text "Part 1:" <+> integer (σ $ part1 input)

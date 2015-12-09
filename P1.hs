@@ -3,10 +3,6 @@
 import Prelude.Unicode
 import ProbieUnicode
 
-import Control.Monad.Unicode
-
-import Data.Monoid.Unicode
-
 import Text.PrettyPrint
 
 toMoves ∷ String → [ℤ]

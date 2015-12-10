@@ -34,10 +34,10 @@ allPaths paths = catMaybes $ map (`followPath` (getPaths paths places))
 followPath ∷ [ℤ] → Map ℤ [(ℤ, ℤ)] → Maybe ℤ
 followPath []  _ = Just 0
 followPath [_] _ = Just 0
-followPath (x:y:zs) m = do
-    paths ← M.lookup x m
+followPath (x:y:zs) world = do
+    paths ← M.lookup x world
     n     ← lookup y paths
-    m     ← followPath (y:zs) m
+    m     ← followPath (y:zs) world
     Just $ n + m
 
 reflexive ∷ [(String,String,ℤ)] → [(String,String,ℤ)]

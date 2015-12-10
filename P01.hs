@@ -16,7 +16,7 @@ part2 = σ ∘ length ∘ takeWhile (≥ 0) ∘ scanl (+) 0 ∘ toMoves
 
 main ∷ IO ()
 main = do
-  input ← readFile "P1.txt"
+  input ← readFile "P01.txt"
   putRender $ text "Advent of Code Problem 1"
           $+$ text "Part 1:" <+> integer (part1 input)
           $+$ text "Part 2:" <+> integer (part2 input)

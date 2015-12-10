@@ -50,7 +50,7 @@ part2 = (M.! "a") ∘ löb ∘ ((M.insert "b") <$> const ∘ part1 ⊛ buildWire
 
 main ∷ IO ()
 main = do 
-  input ← readFile "P7.txt"
+  input ← readFile "P07.txt"
   putRender $ text "Advent of Code Problem 7"
           $+$ text "Part 1:" <+> integer (σ $ part1 input)
           $+$ text "Part 2:" <+> integer (σ $ part2 input)

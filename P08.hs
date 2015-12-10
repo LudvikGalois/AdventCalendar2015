@@ -23,7 +23,7 @@ part2 = sum ∘ map ((-) <$> length ∘ show ⊛ length) ∘ lines
         
 main ∷ IO ()
 main = do
-  input ← readFile "P8.txt"
+  input ← readFile "P08.txt"
   putRender $ text "Advent of Code Problem 8"
           $+$ text "Part 1:" <+> int (part1 input)
           $+$ text "Part 2:" <+> int (part2 input)

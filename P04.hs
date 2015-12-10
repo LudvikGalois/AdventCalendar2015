@@ -23,7 +23,7 @@ part2 = adventCoin 6
         
 main ∷ IO ()
 main = do
-  input ← readFile "P4.txt"
+  input ← readFile "P04.txt"
   putRender $ text "Advent of Code Problem 4"
           $+$ text "Part 1:" <+> integer (part1 input)
           $+$ text "Part 2:" <+> integer (part2 input)

@@ -18,6 +18,9 @@ import Text.PrettyPrint
 (↓) ∷ Int → [α] → [α]
 (↓) = drop
 
+(‼) ∷ [α] → Int → α
+(‼) = (!!)
+
 σ ∷ (Integral α, Integral β) ⇒ α → β
 σ = fromIntegral
 

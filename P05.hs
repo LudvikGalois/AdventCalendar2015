@@ -35,7 +35,7 @@ part2 = σ ∘ length ∘ filter improvedNiceString ∘ lines
 
 main ∷ IO ()
 main = do
-  input ← readFile "P5.txt"
+  input ← readFile "P05.txt"
   putRender $ text "Advent of Code Problem 5"
           $+$ text "Part 1:" <+> integer (part1 input)
           $+$ text "Part 2:" <+> integer (part2 input)

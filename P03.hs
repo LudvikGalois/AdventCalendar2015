@@ -26,7 +26,7 @@ part2 s = σ $ S.size $ path santaPath ∪ path robotPath
 
 main ∷ IO ()
 main = do
-  input ← readFile "P3.txt"
+  input ← readFile "P03.txt"
   putRender $ text "Advent of Code Problem 3"
           $+$ text "Part 1:" <+> integer (part1 input)
           $+$ text "Part 2:" <+> integer (part2 input)

@@ -44,7 +44,7 @@ part2 = solve (succ ∘ succ, succ, max 0 ∘ pred)
         
 main ∷ IO ()
 main = do
-  input ← readFile "P6.txt"
+  input ← readFile "P06.txt"
   putRender $ text "Advent of Code Problem 6"
           $+$ text "Part 1:" <+> int (part1 input)
           $+$ text "Part 2:" <+> int (part2 input)

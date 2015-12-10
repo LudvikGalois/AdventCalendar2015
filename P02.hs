@@ -25,7 +25,7 @@ part2 = sum ∘ map ribbon ∘ map dimensions ∘ lines
         
 main ∷ IO ()
 main = do
-  input ← readFile "P2.txt"
+  input ← readFile "P02.txt"
   putRender $ text "Advent of Code Problem 2"
           $+$ text "Part 1:" <+> integer (part1 input)
           $+$ text "Part 2:" <+> integer (part2 input)

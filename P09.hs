@@ -54,7 +54,7 @@ part2 = maximum ∘ generatePaths
 
 main ∷ IO ()
 main = do
-  input ← readFile "P9.txt"
+  input ← readFile "P09.txt"
   putRender $ text "Advent of Code Problem 9"
           $+$ text "Part 1:" <+> integer (part1 input)
           $+$ text "Part 2:" <+> integer (part2 input)

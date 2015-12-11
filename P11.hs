@@ -39,7 +39,7 @@ part1 ∷ String
 part1 = head ∘ dropWhile (not ∘ valid) $ iterate increment "cqjxjnds"
 
 part2 :: String
-part2 = head ∘ dropWhile (not ∘ valid) $ iterate increment part1
+part2 = head ∘ dropWhile (not ∘ valid) ∘ tail $ iterate increment part1
 
 main ∷ IO ()
 main = do

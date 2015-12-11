@@ -21,6 +21,9 @@ import Text.PrettyPrint
 (‼) ∷ [α] → Int → α
 (‼) = (!!)
 
+(⨾) ∷ (a → b) → (b → c) → a → c
+(⨾) = flip (∘)
+
 σ ∷ (Integral α, Integral β) ⇒ α → β
 σ = fromIntegral
 

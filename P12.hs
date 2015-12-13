@@ -11,11 +11,11 @@ import Text.JSON
 
 part1 ∷ String → ℤ
 part1 s = case countNums <$> (decode s) of
-  Ok x -> round x
+  Ok x → round x
 
 part2 ∷ String → ℤ
 part2 s = case countNums' <$> (decode s) of
-  Ok x -> round x
+  Ok x → round x
 
 countNums ∷ JSValue → ℚ
 countNums x = case x of
@@ -28,6 +28,8 @@ countNums' ∷ JSValue → ℚ
 countNums' x = case x of
   JSRational _ n → n
   JSArray xs → sum (map countNums' xs)
-  JSObject obj | JSString (toJSString "red") ∈ (map snd $ fromJSObject obj) → 0
-               | otherwise → sum $ map (countNums' ∘ snd) $ fromJSObject obj
+  JSObject obj → let obj' = map snd (fromJSObject obj) in
+                 if JSString (toJSString "red") ∈ obj'
+                     then 0
+                     else sum $ map countNums' obj'
   _ → 0

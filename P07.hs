@@ -19,21 +19,21 @@ import qualified Data.Map as M
 type Wireset = Map String Word16
 type Wirespec = (String, (Wireset → Word16))
 
-δ x m | all isDigit x = read x
-      | otherwise     = m M.! x
-
 parseWirespec ∷ String → Wirespec
 parseWirespec s = case words s of
-  [x, "AND",    y, "->", w] → (w, (.&.) <$> δ x ⊛ δ y)
-  [x, "OR",     y, "->", w] → (w, (.|.) <$> δ x ⊛ δ y)
-  [x, "LSHIFT", n, "->", w] → (w, (`shift` (read n)) ∘ δ x)
-  [x, "RSHIFT", n, "->", w] → (w, (`shift` (- (read n)))∘ δ x)
-  ["NOT", x, "->", w]       → (w, complement ∘ δ x)
-  [n, "->", w]              → (w, δ n)
+    [x, "AND",    y, "->", w] → (w, (.&.) <$> δ x ⊛ δ y)
+    [x, "OR",     y, "->", w] → (w, (.|.) <$> δ x ⊛ δ y)
+    [x, "LSHIFT", n, "->", w] → (w, (`shift` (read n)) ∘ δ x)
+    [x, "RSHIFT", n, "->", w] → (w, (`shift` (- (read n)))∘ δ x)
+    ["NOT", x, "->", w]       → (w, complement ∘ δ x)
+    [n, "->", w]              → (w, δ n)
+  where δ x m | all isDigit x = read x -- A valuation function
+              | otherwise     = m M.! x
+
 
 löb ∷ Functor f ⇒ f (f α → α) → f α
-löb f = go
-  where go = fmap ($ go) f
+löb f = result
+  where result = fmap ($ result) f
 
 buildWireSet ∷ String → Wireset
 buildWireSet = löb ∘ buildWireSpec
